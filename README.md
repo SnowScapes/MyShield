@@ -116,7 +116,6 @@ public class GameManager : MonoBehaviour
 </details>
 <details>
     <summary><b>RetryButton.cs</b></summary>
-
 ```csharp
 public class RetryButton : MonoBehaviour
 {
@@ -126,7 +125,6 @@ public class RetryButton : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 }
-
 ```
 </details>
 <details>

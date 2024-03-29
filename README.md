@@ -27,11 +27,6 @@
 </summary>
 
 ```csharp
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -115,6 +110,68 @@ public class GameManager : MonoBehaviour
     void TimeStop()
     {
         Time.timeScale = 0.0f;
+    }
+}
+```
+</details>
+<details>
+    <summary><b>RetryButton.cs</b></summary>
+
+```csharp
+public class RetryButton : MonoBehaviour
+{
+    // Retry버튼을 클릭할 경우 SceneManager를 통해 MainScene을 다시 불러온다
+    public void Retry()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+}
+
+```
+</details>
+<details>
+    <summary><b>Shield.cs</b></summary>
+```csharp
+public class Shield : MonoBehaviour
+{
+    void Update()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // 마우스 포인터의 월드벡터 알아내기
+        transform.position = mousePos; // 쉴드의 위치를 마우스 포인터의 위치로 이동
+    }
+}
+```
+</details>
+<details>
+    <summary><b>Square.cs</b></summary>
+```csharp
+public class Square : MonoBehaviour
+{
+    // square의 위치를 Random.Range로 뽑아 position 설정
+    // square의 크기를 Random.Range로 뽑아 localScale 설정
+    void Start()
+    {
+        float x = Random.Range(-3.0f, 3.0f);
+        float y = Random.Range(3.0f, 5.0f);
+
+        transform.position = new Vector2(x, y);
+
+        float size = Random.Range(0.5f, 1.5f);
+        transform.localScale = new Vector2(size, size);
+    }
+
+    void Update()
+    {
+        // Square 오브젝트가 화면 밑으로 내려갔을 때 오브젝트를 Destroy 해주는 것으로 리소스 낭비를 막음
+        if (transform.position.y < -5.0f)
+            Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Balloon 태그를 가진 오브젝트와 충돌했을 경우 GameManager의 GameOver 기능 실행
+        if (collision.gameObject.CompareTag("Balloon"))
+            GameManager.Instance.GameOver();
     }
 }
 ```

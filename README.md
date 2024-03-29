@@ -113,9 +113,11 @@ public class GameManager : MonoBehaviour
     }
 }
 ```
+
 </details>
 <details>
     <summary><b>RetryButton.cs</b></summary>
+
 ```csharp
 public class RetryButton : MonoBehaviour
 {
@@ -126,9 +128,11 @@ public class RetryButton : MonoBehaviour
     }
 }
 ```
+
 </details>
 <details>
     <summary><b>Shield.cs</b></summary>
+
 ```csharp
 public class Shield : MonoBehaviour
 {
@@ -139,9 +143,11 @@ public class Shield : MonoBehaviour
     }
 }
 ```
+
 </details>
 <details>
     <summary><b>Square.cs</b></summary>
+
 ```csharp
 public class Square : MonoBehaviour
 {
@@ -173,5 +179,6 @@ public class Square : MonoBehaviour
     }
 }
 ```
+
 </details>
 </details>
